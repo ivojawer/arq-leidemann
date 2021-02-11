@@ -1,4 +1,5 @@
-import { NextPage, GetStaticProps, GetStaticPaths } from 'next';
+import { readdirSync } from 'fs';
+import { NextPage, GetStaticPaths } from 'next';
 
 interface Props {
     content: { attributes: ObraAttributes };
@@ -12,21 +13,18 @@ interface Props {
     return (
       <>
         <h1>{attributes.title}</h1>
-        <img src={attributes.image} alt='image' />
+        <img src={`${attributes.image}`} alt='image' />
       </>
     );
   };
 
   export const getStaticPaths: GetStaticPaths = async () => {
-    const blogSlugs = ((context) => {
-      const keys = context.keys()
-      const data = keys.map((key: string, _index: any) => {
-        let slug = key.replace(/^.*[\\\/]/, '').slice(0, -3)
-  
-        return slug
-      })
-      return data
-    })(await import(`../../content/${'obras'}`))
+    const directory = await readdirSync('./content/obras/')
+    const blogSlugs = 
+      directory.map(element => {
+          return element.substring(0,element.length - 3)
+      });
+      
   
     const paths = blogSlugs.map((slug: any) => `/obras/${slug}`)
   

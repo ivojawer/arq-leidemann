@@ -7,16 +7,16 @@ export default {
       branch: 'main',
     },
     media_folder: 'public/img',
-    public_folder: 'img',
+    public_folder: '/img',
     collections: [
       {
-        name: 'pages',
-        label: 'Pages',
+        name: 'obras',
+        label: 'Obras',
         files: [
           {
-            label: 'Obra',
-            name: 'obra',
-            file: 'content/pages/obras.md',
+            label: 'Pilar Chico',
+            name: 'pilar-chico',
+            file: 'content/obras/pilar-chico.md',
             fields: [
                 {
                     label: 'Titulo Obra',
