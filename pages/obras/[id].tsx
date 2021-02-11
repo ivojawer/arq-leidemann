@@ -6,14 +6,14 @@ interface Props {
   }
   interface ObraAttributes {
     title: string;
-    image: string;
+    images: string[];
   }
   const ObraPage: NextPage<Props> = ({ content }) => {
     const { attributes } = content;
     return (
       <>
         <h1>{attributes.title}</h1>
-        <img src={`${attributes.image}`} alt='image' />
+        { attributes.images.map(image => <img src={image}/>) }
       </>
     );
   };
