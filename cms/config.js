@@ -17,7 +17,18 @@ export default {
             label: 'Obra',
             name: 'obra',
             file: 'content/pages/obras.md',
-            fields: require('./fields/obra'),
+            fields: [
+                {
+                    label: 'Titulo Obra',
+                    name: 'title',
+                    widget: 'string',
+                },
+                {
+                    label: 'Imagen de la Obra',
+                    name: 'image',
+                    widget: 'image',
+                }
+            ],
           },
         ],
       },
